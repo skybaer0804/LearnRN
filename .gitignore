@@ -1,0 +1,44 @@
+# React Native
+node_modules/
+*.log
+*.swp
+*.swo
+*.DS_Store
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.expo/
+.expo-shared/
+
+# Project directories
+ios/Pods/
+ios/build/
+ios/DerivedData/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+
+# Bundler output
+*.jsbundle
+
+# Expo
+web-build/
+.expo/
+
+# MacOS
+.DS_Store
+
+# Miscellaneous
+.env
+!.env.example
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# React Native specific
+__tests__/e2e/reports/
+__tests__/e2e/reports/screenshots/
