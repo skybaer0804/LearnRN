@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Node } from 'react';
-import {
-    SafeAreaView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    useColorScheme,
-    View,
-} from 'react-native';
-import Greeting from './components/Greeting';
-import Box from './components/Box';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import Counter from './components/Counter';
 
 const App: () => Node = () => {
+    const [count, setCount] = useState(0);
+
+    const onIncrease = () => setCount(count + 1);
+
+    const onDecrease = () => setCount(count - 1);
+
     return (
-        <SafeAreaView>
-            <Box rounded={true} size={'small'} color={'blue'} />
-            <Box rounded={true} size={'medium'} color={'tomato'} />
-            <Box rounded={false} size={'large'} color={'green'} />
+        <SafeAreaView style={styles.full}>
+            <Counter
+                count={count}
+                onIncrease={onIncrease}
+                onDecrease={onDecrease}
+            />
         </SafeAreaView>
     );
 };
+const styles = StyleSheet.create({
+    full: {
+        flex: 1,
+        backgroundColor: 'cyan',
+    },
+});
 
 export default App;
