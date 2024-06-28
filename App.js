@@ -1,29 +1,45 @@
 import React, { useState } from 'react';
 import type { Node } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import Counter from './components/Counter';
-
+import {
+    SafeAreaView,
+    StyleSheet,
+    KeyboardAvoidingView,
+    Platform,
+} from 'react-native';
+import DateHead from './components/DateHead';
+import AddTodo from './components/AddTodo';
+import Empty from './components/Empty';
+import TodoList from './components/TodoList';
 const App: () => Node = () => {
-    const [count, setCount] = useState(0);
+    const date = new Date();
 
-    const onIncrease = () => setCount(count + 1);
-
-    const onDecrease = () => setCount(count - 1);
+    const [todos, setTodos] = useState([
+        { id: 1, text: '작업환경 설정', done: true },
+        { id: 2, text: '작업환경 설정1', done: false },
+        { id: 3, text: '작업환경 설정2', done: true },
+    ]);
 
     return (
         <SafeAreaView style={styles.full}>
-            <Counter
-                count={count}
-                onIncrease={onIncrease}
-                onDecrease={onDecrease}
-            />
+            <KeyboardAvoidingView
+                // behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+                behavior={Platform.select({ ios: 'padding' })}
+                style={styles.avoid}
+            >
+                <DateHead date={date} />
+                {todos.length === 0 ? <Empty /> : <TodoList todos={todos} />}
+                <AddTodo />
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 };
 const styles = StyleSheet.create({
     full: {
         flex: 1,
-        backgroundColor: 'cyan',
+        backgroundColor: 'white',
+    },
+    avoid: {
+        flex: 1,
     },
 });
 
