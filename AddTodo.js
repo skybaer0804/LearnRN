@@ -12,10 +12,11 @@ import {
     Keyboard,
 } from 'react-native';
 
-export default function AddTodo() {
+export default function AddTodo({ onInsert }) {
     const [text, setText] = useState('');
 
     const onPress = () => {
+        onInsert(text);
         setText('');
         Keyboard.dismiss(); //현재 나타난 키보드를 닫는 함수.
     };
