@@ -39,6 +39,22 @@ eslintrc.js 참고
 }
 }
 
-라이브러리
+라이브러리 목록
+
 벡터아이콘 사용
 yarn add react-native-vector-icons
+
+AsyncStorage 설치
+yarn add @react-native-community/async-storage
+
+react-navigation 설치
+yarn add @react-navigation/native
+
+react-navigation 의존라이브러리 설치
+yarn add react-native-screens react-native-safe-area-context
+
+머티리얼 하단탭 내비게이터 설치
+yarn add @react-navigation/material-bottom-tabs react-native-paper react-native-tab-view
+
+하단탭 내비게이터 설치
+yarn add @react-navigation/bottom-tabs
