@@ -3,17 +3,21 @@ import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-na
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import MainTab, { MainTabNavigationScreenParams } from './MainTab';
+import TodoScreen from './TodoScreen';
+import WriteScreen from './WriteScreen';
 
 /*
  * TypeScript에서 네이티브 스택 네비게이션을 사용할 때는 어떤 화면에 어떤 파라미터가 필요한지 정의하는 StackParamList 타입을 정의해줘야 합니다.
  * 이 타입을 사용하면 다른 화면을 띄울때 화면의 이름과 라우트 파라미터를 검증 할 수 있습니다.
  * interface가 아닌 type을 사용해서 선언해야 합니다.
  */
-type RootStackParmaList = {
+export type RootStackParmaList = {
     MainTab: MainTabNavigationScreenParams;
+    TodoScreen: MainTabNavigationScreenParams;
     Detail: {
         id: number;
     };
+    Write: MainTabNavigationScreenParams;
 };
 
 /*
@@ -42,6 +46,8 @@ export default function RootStack() {
         <Stack.Navigator>
             <Stack.Screen component={MainTab} name='MainTab' options={{ headerShown: false }} />
             <Stack.Screen component={DetailScreen} name='Detail' />
+            <Stack.Screen component={TodoScreen} name='TodoScreen' />
+            <Stack.Screen component={WriteScreen} name='Write' options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }

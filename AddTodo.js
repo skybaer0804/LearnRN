@@ -23,21 +23,19 @@ export default function AddTodo({ onInsert }) {
 
     const button = (
         <View style={styles.buttonStyle}>
-            <Image
-                source={require('../assets/icons/add_white/add_white.png')}
-            />
+            <Image source={require('../assets/icons/add_white/add_white.png')} />
         </View>
     );
 
     return (
         <View style={styles.block}>
             <TextInput
-                placeholder="할일을 입력하세요."
+                placeholder='할일을 입력하세요.'
                 style={styles.input}
                 value={text}
                 onChangeText={setText}
                 onSubmitEditing={onPress} // Enter를 눌렀을 때 호출되는 함수
-                returnKeyType="done" // Enter타입을 지정, 타입에 따라 Enter부분에 보이는 설명 또는 아이콘이 바뀜.
+                returnKeyType='done' // Enter타입을 지정, 타입에 따라 Enter부분에 보이는 설명 또는 아이콘이 바뀜.
             />
             {Platform.select({
                 ios: (
@@ -47,9 +45,7 @@ export default function AddTodo({ onInsert }) {
                 ),
                 android: (
                     <View style={styles.circleWrapper}>
-                        <TouchableNativeFeedback onPress={onPress}>
-                            {button}
-                        </TouchableNativeFeedback>
+                        <TouchableNativeFeedback onPress={onPress}>{button}</TouchableNativeFeedback>
                     </View>
                 ),
             })}

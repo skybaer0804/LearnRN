@@ -1,19 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    TextInput,
-    KeyboardAvoidingView,
-    Keyboard,
-    Platform,
-    StatusBar,
-    Image,
-    FlatList,
-    TouchableOpacity,
-    Alert,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 export default function TodoItem({ item, onToggle, onRemove }) {
     const remove = () => {
@@ -35,7 +22,7 @@ export default function TodoItem({ item, onToggle, onRemove }) {
                 // 옵션 객체
                 cancelable: true,
                 onDismiss: () => {},
-            }
+            },
         );
     };
 
@@ -43,19 +30,13 @@ export default function TodoItem({ item, onToggle, onRemove }) {
         <View style={styles.item}>
             <TouchableOpacity onPress={() => onToggle(item.id)}>
                 <View style={[styles.circle, item.done && styles.filled]}>
-                    {item.done && (
-                        <Image
-                            source={require('../assets/icons/check_white/check_white.png')}
-                        />
-                    )}
+                    {item.done && <Image source={require('../assets/icons/check_white/check_white.png')} />}
                 </View>
             </TouchableOpacity>
-            <Text style={[styles.text, item.done && styles.lineThrough]}>
-                {item.text}
-            </Text>
+            <Text style={[styles.text, item.done && styles.lineThrough]}>{item.text}</Text>
             <TouchableOpacity onPress={remove}>
                 {item.done ? (
-                    <Icon name="delete" size={32} color="red" />
+                    <Icon name='delete' size={32} color='red' />
                 ) : (
                     <View style={styles.removePlaceholder} />
                 )}

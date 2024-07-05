@@ -9,16 +9,13 @@ import Counter from '../components/Counter';
 export default function HomeScreen() {
     // useNavigation 사용시 Generic
     const navigation = useNavigation<RootStackNavigationProp>();
-    const onPress = () => {
-        navigation.navigate('Detail', { id: 1 });
-    };
-
     return (
         <View>
             <Profile name='Wonjae' />
-            <Button title='Open Detail' onPress={onPress} />
+            <Button title='Open Detail' onPress={() => navigation.navigate('Detail', { id: 1 })} />
             <MessageForm />
             <Counter />
+            <Button title='TodoScreen 열기' onPress={() => navigation.navigate('TodoScreen')} />
         </View>
     );
 }
