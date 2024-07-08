@@ -1,21 +1,23 @@
-import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
-import { useLog, useSetLog } from '../context/LogContext';
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 import FloatingWriteButton from '../components/FloatingWriteButton';
+import FeedList from '../components/FeedList';
+import { useLogs } from '../context/LogContext';
 
 export default function FeedsScreen() {
-    const log = useLog();
-    const setLog = useSetLog();
+    const logs = useLogs();
+    const [hidden, setHidden] = useState(false);
+
+    const onScrollToBottom = (isBottom: boolean) => {
+        if (hidden !== isBottom) {
+            setHidden(isBottom);
+        }
+    };
 
     return (
         <View style={styles.block}>
-            <TextInput
-                style={styles.input}
-                value={log}
-                onChangeText={setLog}
-                placeholder='텍스트를 입력하세요'
-            />
-            <FloatingWriteButton />
+            <FeedList logs={logs} onScrollToBottom={onScrollToBottom} />
+            <FloatingWriteButton hidden={hidden} />
         </View>
     );
 }

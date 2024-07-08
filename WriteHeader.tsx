@@ -7,7 +7,8 @@ import TransparentCircleButton from './TransparentCircleButton';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParmaList>;
 
-export default function WriteHeader() {
+export default function WriteHeader(props: { onSave: () => void }) {
+    const { onSave } = props;
     const navigation = useNavigation<NavigationProp>();
     const onGoBack = () => {
         navigation.pop();
@@ -19,7 +20,7 @@ export default function WriteHeader() {
             </View>
             <View style={styles.buttons}>
                 <TransparentCircleButton name={'delete-forever'} color={'#ef5350'} hasMarginRight />
-                <TransparentCircleButton name={'check'} color={'#009688'} hasMarginRight />
+                <TransparentCircleButton name={'check'} color={'#009688'} hasMarginRight onPress={onSave} />
             </View>
         </View>
     );

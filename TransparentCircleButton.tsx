@@ -6,7 +6,7 @@ interface Props {
     name: string;
     color: string;
     hasMarginRight?: boolean;
-    onPress?: void | undefined;
+    onPress?: () => void | undefined;
 }
 
 export default function TransparentCircleButton({ name, color, hasMarginRight, onPress }: Props) {

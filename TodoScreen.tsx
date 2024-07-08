@@ -37,7 +37,6 @@ export default function TodoScreen() {
     };
 
     const onToggle = (id: number) => {
-        console.info('id ? ', id);
         const nextTodos = todos.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo));
         setTodos(nextTodos);
     };
